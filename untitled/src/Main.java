@@ -11,6 +11,7 @@ public class Main {
         double price = 19.99;
         char grade = 'A';
         boolean isWorking = true;
+
         // if statement
         if(isWorking){
         System.out.println("Good!");
