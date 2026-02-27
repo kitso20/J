@@ -10,11 +10,11 @@ public class Main {
         int age = 22;
         double price = 19.99;
         char grade = 'A';
-        boolean isWorking = true;
+        boolean isWorking = false;
 
         // if statement
         if(isWorking){
-        System.out.println("Good!");
+            System.out.println("Good!");
         }
         else {
             System.out.println("Why are you not working?");
