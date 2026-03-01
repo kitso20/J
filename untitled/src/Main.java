@@ -1,24 +1,14 @@
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
-        //print out in a new line and not
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("i like wine");
-        System.out.println("it's really good");
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
 
-        //variables
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
 
-        int age = 22;
-        double price = 19.99;
-        char grade = 'A';
-        boolean isWorking = false;
-
-        // if statement
-        if(isWorking){
-            System.out.println("Good!");
-        }
-        else {
-            System.out.println("Why are you not working?");
-        }
-        String name = "Kitso ";
+        scanner.close();
     }
 }
