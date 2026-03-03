@@ -13,6 +13,8 @@ public class Main {
         boolean isStudent = scanner.nextBoolean();
         if(isStudent){
         System.out.print("Your name is " + name + "and you're " + age + "and you're a wethinkcoder");
+        }else{
+            System.out.print("Your name is " + name + "and you're " + age + "and you're a wethinkcoder");
         }
 
         scanner.close();
