@@ -14,7 +14,8 @@ public class Main {
         System.out.print("Enter a adjective(description): ");
         String adjective3 = scanner.nextLine();
 
-        System.out.println("\nToday I went to a " + adjective1 + " zoo.");
+        System.out.println();
+        System.out.println("Today I went to a " + adjective1 + " zoo.");
         System.out.println("In an exhibit, I saw a " + noun + ".");
         System.out.println(noun + " was " + adjective2 + " and " + verb + "!");
         System.out.println("I was " + adjective3 + "!");
