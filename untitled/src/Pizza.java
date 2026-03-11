@@ -39,26 +39,55 @@
 //    }
 //}
 
-class Person {
-    final int age;
+//class Person {
+//    final int age;
+//
+//    Person(int age) {
+//        this.age = age;
+//    }
+//}
+//
+//class Employee extends Person {
+//    final String name;
+//
+//    Employee(String name, int age) {
+//        if (age < 18 || age > 67)
+//            throw new IllegalArgumentException("Age must be between 18 and 67");
+//        super(age); // super() is no longer required as the first statement in Java 25
+//        this.name = name;
+//    }
+//
+//    public static void main(String[] args) {
+//        var emp = new Employee("Alice", 35);
+//        System.out.println("Person age set: " + emp.age);
+//    }
+//}
 
-    Person(int age) {
-        this.age = age;
-    }
-}
+import java.lang.ScopedValue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-class Employee extends Person {
-    final String name;
-
-    Employee(String name, int age) {
-        if (age < 18 || age > 67)
-            throw new IllegalArgumentException("Age must be between 18 and 67");
-        super(age); // super() is no longer required as the first statement in Java 25
-        this.name = name;
-    }
+public class Pizza {
+    static final ScopedValue<String> USER = ScopedValue.newInstance();
 
     public static void main(String[] args) {
-        var emp = new Employee("Alice", 35);
-        System.out.println("Person age set: " + emp.age);
+        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            executor.submit(() -> ScopedValue.where(USER, "Alice").run(() -> {
+                System.out.println("Thread: " + Thread.currentThread());
+                System.out.println("User: " + USER.get());
+            }));
+
+            executor.submit(() -> ScopedValue.where(USER, "Bob").run(() -> {
+                System.out.println("Thread: " + Thread.currentThread());
+                System.out.println("User: " + USER.get());
+            }));
+
+            // Optional delay to ensure output appears before main exits
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
+
+
